@@ -29,7 +29,13 @@ class StudentAdapter(
 
 
         }
+//        tempRow 는 절대 null일 가능성이 없다 => 진짜 row 에 옮겨담자
 
+        val row = tempRow!!
+
+//        만들어진 row 를 getView 작업의 결과물로 지정
+
+        return row
 
     }
 
