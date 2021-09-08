@@ -48,6 +48,8 @@ class StudentAdapter(
         nameTxt.text = data.name
         addressTxt.text = data.address
 
+        val age = 2021 - data.birthYear + 1
+        ageTxt.text = "(${age}세)"
 
 //      만들어진 row 를 getView 작업의 결과물로 지정
 
