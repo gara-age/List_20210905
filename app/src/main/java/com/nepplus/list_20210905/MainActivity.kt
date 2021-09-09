@@ -1,9 +1,11 @@
 package com.nepplus.list_20210905
 
+import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.nepplus.list_20210905.adapters.StudentAdapter
 import com.nepplus.list_20210905.datas.StudentData
 import kotlinx.android.synthetic.main.activity_main.*
@@ -61,11 +63,28 @@ class MainActivity : AppCompatActivity() {
 
 //            Toast.makeText(this,"${clickedStudent.name}이(가) 길게 눌림",Toast.LENGTH_SHORT).show()
 
-//            실제로 목록에서 제거시키기
-            mStudentList.remove(clickedStudent)
+//            정말 그 학생을 삭제할건지? 물어보고 -> 확인을 눌렀을때만 삭제
+
+            val alert = AlertDialog.Builder(this)
+            alert.setTitle("학생 삭제 확인")
+            alert.setMessage("정말 ${clickedStudent.name} 학생을 삭제하시겠습니까?")
+            alert.setPositiveButton("확인", DialogInterface.OnClickListener { dialogInterface, i ->
+
+//                확인까지 누르면 실행해줄 코드
+
+                //            실제로 목록에서 제거시키기
+                mStudentList.remove(clickedStudent)
 
 //            리스트뷰의 어댑터에 -> 변경사항 확인 공지
-            mAdapter.notifyDataSetChanged()
+                mAdapter.notifyDataSetChanged()
+
+            })
+
+            alert.setNegativeButton("취소",null)
+
+            alert.show()
+
+
 
 //            마지막에 결과로 true/ false로 지정 필요
 
