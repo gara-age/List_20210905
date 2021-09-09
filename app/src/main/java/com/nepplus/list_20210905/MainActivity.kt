@@ -56,10 +56,16 @@ class MainActivity : AppCompatActivity() {
         studentListView.setOnItemLongClickListener { adapterView, view, position, l ->
 //            ~~가 길게 눌림. 토스트 출력
 
+//            길게 눌린 학생 -> 목록(mStudentList)에서 제거 => 리스트뷰에서도 빠지게
             val clickedStudent = mStudentList[position]
 
-            Toast.makeText(this,"${clickedStudent.name}이(가) 길게 눌림",Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this,"${clickedStudent.name}이(가) 길게 눌림",Toast.LENGTH_SHORT).show()
 
+//            실제로 목록에서 제거시키기
+            mStudentList.remove(clickedStudent)
+
+//            리스트뷰의 어댑터에 -> 변경사항 확인 공지
+            mAdapter.notifyDataSetChanged()
 
 //            마지막에 결과로 true/ false로 지정 필요
 
