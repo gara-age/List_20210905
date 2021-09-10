@@ -58,9 +58,4 @@ class StudentAdapter(
         return row
 
     }
-
-
-
-
-
 }
